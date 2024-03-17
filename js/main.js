@@ -16,6 +16,7 @@ do {
 
     if (nombreEstudiante !== "salir") {
         calificacionesPorEstudiante[nombreEstudiante] = {};
+
         do {
             asignatura = prompt(`Ingresa el número de la asignatura: 
             1: Matemática
@@ -36,6 +37,12 @@ do {
                         } else {
                             calificacionesPorEstudiante[nombreEstudiante][asignaturas[asignatura]] = [calificacion];
                         }
+
+                        let continuar = prompt("¿Deseas cargar otra nota para este estudiante? (Sí/No)").trim().toLowerCase();
+
+                        if (continuar === "no") {
+                            break; 
+                        }
                     } else {
                         alert("Por favor, ingresa una calificación válida.");
                     }
@@ -43,9 +50,15 @@ do {
                     alert("Por favor, ingresa un número válido de asignatura.");
                 }
             }
-        } while(asignatura !== "salir");
+        } while (true); 
+
+        let cargarOtroEstudiante = prompt("¿Deseas cargar otro estudiante? (Sí/No)").trim().toLowerCase();
+
+        if (cargarOtroEstudiante === "no") {
+            break; 
+        }
     }
-} while(nombreEstudiante !== "salir");
+} while (nombreEstudiante !== "salir");
 
 // Calcular promedios por asignatura y estudiante
 let promediosPorEstudiante = {};
